@@ -1,14 +1,12 @@
 import Token from '../token'
+
 export function render(tokens: Token[]) {
-  let html = ''
-
+  let html = '';
   tokens.forEach((token) => {
-    if (token.type === 'text') {
-      html += token.text // 直接输出文本内容
-    } else {
-      html += token.tag // 直接使用 token.tag
+    if (token.tag) html += token.tag; // 直接拼接标签
+    if (token.type === 'text' && token.text) {
+      html += token.text; // 补充文本内容
     }
-  })
-
-  return html
+  });
+  return html;
 }
